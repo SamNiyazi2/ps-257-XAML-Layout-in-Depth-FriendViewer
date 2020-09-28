@@ -23,5 +23,9 @@
         <Controls:NavigationControl Grid.Row="1" />
         <Controls:FriendControl Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedFriend}" />
         <Controls:FooterControl Grid.Row="2" Grid.ColumnSpan="2" />
+
+        <GridSplitter HorizontalAlignment="Right" Grid.Row="1"  Width="20" Background="Red"/>
+
+    
     </Grid>
 </Window>

@@ -3,13 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:designData="clr-namespace:FriendViewer.DesignTimeData"
              mc:Ignorable="d"
              d:DesignWidth="300" d:DesignHeight="300"
-             Background="#333333">
+             Background="#333333"
+             >
+
+    <!--xmlns:designData="clr-namespace:FriendViewer.DesignTimeData"
     <d:DataContext>
         <designData:DesignFriend/>
-    </d:DataContext>
+    </d:DataContext>-->
+
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -18,7 +21,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> 
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -41,6 +44,9 @@
         <TextBox Grid.Row="3" Grid.Column="1"
                  Text="{Binding Homepage}"
                  Margin="5"/>
+
+        <GridSplitter VerticalAlignment="Top" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" Height="2" Background="White"  />
+
 
         <Border Grid.Row="4" Grid.Column="1"
                 BorderThickness="2" BorderBrush="Black"
