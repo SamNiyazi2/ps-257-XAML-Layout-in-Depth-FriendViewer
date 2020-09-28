@@ -23,10 +23,7 @@ namespace FriendViewer.DesignTimeData
         }
 
         private void SetImageProperty()
-        {
-
-            Uri testvalue =  new Uri("FriendViewer;component/thomas.jpg", UriKind.Relative);
-
+        { 
             var streamResourceInfo = 
                 Application.GetResourceStream(
                 new Uri("FriendViewer;component/DesignTimeData/Images/thomas.jpg", UriKind.Relative));

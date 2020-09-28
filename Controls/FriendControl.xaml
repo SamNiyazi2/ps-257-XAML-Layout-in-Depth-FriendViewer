@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="FriendViewer.Controls.FriendControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:designData="clr-namespace:FriendViewer.DesignTimeData"
+             mc:Ignorable="d"
+             d:DesignWidth="300" d:DesignHeight="300"
+             Background="#333333">
+    <d:DataContext>
+        <designData:DesignFriend/>
+    </d:DataContext>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding FullName}"
+                   Grid.ColumnSpan="2" FontSize="25"
+                   Margin="0 10"/>
+
+        <Label Grid.Row="1" Content="CellPhone"/>
+        <TextBox Grid.Row="1" Grid.Column="1"
+                 Text="{Binding CellPhone}"
+                 Margin="5"/>
+
+        <Label Grid.Row="2" Content="Email"/>
+        <TextBox Grid.Row="2" Grid.Column="1"
+                 Text="{Binding Email}"
+                 Margin="5"/>
+
+        <Label Grid.Row="3" Content="Homepage"/>
+        <TextBox Grid.Row="3" Grid.Column="1"
+                 Text="{Binding Homepage}"
+                 Margin="5"/>
+
+        <Border Grid.Row="4" Grid.Column="1"
+                BorderThickness="2" BorderBrush="Black"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                MaxWidth="200" MaxHeight="200"
+                MinWidth="30" MinHeight="30"
+                Margin="5">
+            <Image Source="{Binding Image}"/>
+        </Border>
+
+    </Grid>
+</UserControl>

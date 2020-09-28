@@ -7,10 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DataProvider\Images\julia.jpg" />
+    <None Remove="DataProvider\Images\thomas.jpg" />
     <None Remove="DesignTimeData\Images\thomas.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="DataProvider\Images\julia.jpg" />
+    <Resource Include="DataProvider\Images\thomas.jpg" />
     <Resource Include="DesignTimeData\Images\thomas.jpg" />
   </ItemGroup>
 

@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="FriendViewer.Controls.NavigationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="#CCCCCC">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Navigation" Foreground="Red" FontWeight="Bold"
+                       Margin="5"/>
+
+        <ListView Grid.Row="1"
+                  ItemsSource="{Binding Friends}" 
+                  SelectedItem="{Binding SelectedFriend, Mode=TwoWay}"
+                  IsSynchronizedWithCurrentItem="True"
+                  Background="Black" Foreground="White"
+                  DisplayMemberPath="FullName"/>
+    </Grid>
+</UserControl>

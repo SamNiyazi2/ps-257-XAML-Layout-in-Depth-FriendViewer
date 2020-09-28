@@ -1,0 +1,27 @@
+﻿<Window xmlns:Controls="clr-namespace:FriendViewer.Controls"  x:Class="FriendViewer.WindowWindow_v02"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FriendViewer"
+        mc:Ignorable="d"
+        Title="WindowWindow_v02" Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource ViewModelLocator},Path=MainViewModel}"
+        >
+    <Grid>
+        <!--// 09/28/2020 12:10 pm - SSN - [20200928-1156] - [001] - M03-08 - FriendViewer: The application layout-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Controls:HeaderControl Grid.ColumnSpan="2" />
+        <Controls:NavigationControl Grid.Row="1" />
+        <Controls:FriendControl Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedFriend}" />
+        <Controls:FooterControl Grid.Row="2" Grid.ColumnSpan="2" />
+    </Grid>
+</Window>
