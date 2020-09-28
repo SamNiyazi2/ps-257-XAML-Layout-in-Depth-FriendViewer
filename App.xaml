@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:FriendViewer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
     </Application.Resources>
 </Application>

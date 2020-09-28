@@ -6,4 +6,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="DesignTimeData\Images\thomas.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="DesignTimeData\Images\thomas.jpg" />
+  </ItemGroup>
+
 </Project>

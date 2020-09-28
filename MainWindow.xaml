@@ -4,9 +4,52 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FriendViewer"
+        xmlns:designData="clr-namespace:FriendViewer.DesignTimeData"
         mc:Ignorable="d"
+        Background="#333333"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+
+
+    <Window.DataContext>
+        <designData:DesignFriend/>
+    </Window.DataContext>
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="25" Text="{Binding Path=FullName}" Grid.ColumnSpan="2" Margin="0 10"/>
+
+        <Label Grid.Row="1" Content="CellPhone" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=CellPhone}" Margin="5"/>
+
+
+        <Label Grid.Row="2" Content="Email" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Email}" Margin="5"/>
+
+        <Label Grid.Row="3" Content="Homepage" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Homepage}" Margin="5"/>
+
+
+        <Border Grid.Row="4" Grid.Column="1" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                MinHeight="30" MinWidth="30"
+                MaxHeight="200" MaxWidth="200"
+                Margin="5"
+                >
+            <Image Source="{Binding Image}"/>
+
+        </Border>
+
+
 
     </Grid>
 </Window>

@@ -23,6 +23,8 @@ namespace FriendViewer
         public MainWindow()
         {
             InitializeComponent();
+            // 09/28/2020 12:02 pm - SSN
+            Title = "The FriendControl Test";
         }
     }
 }
