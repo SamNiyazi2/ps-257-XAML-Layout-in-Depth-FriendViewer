@@ -8,69 +8,89 @@
         Title="WindowWindow_v02" Height="450" Width="800"
         DataContext="{Binding Source={StaticResource ViewModelLocator},Path=MainViewModel}"
         >
+
+    <Window.Resources>
+
+        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+
+    </Window.Resources>
+
+
     <Grid>
         <!-- 09/28/2020 12:10 pm - SSN - [20200928-1156] - [001] - M03-08 - FriendViewer: The application layout-->
         <!-- 09/29/2020 10:59 am - SSN - [20200929-1048] - [001] - M04-10 - FriendView: Navigation flyout -->
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        
-        
-        <Controls:HeaderControl Grid.ColumnSpan="2" />
 
 
-        <Grid Grid.Row="1" Background="Black">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+        <Grid>
 
 
-            
-            <Controls:FriendControl
+            <!-- Content -->
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <Controls:HeaderControl Grid.ColumnSpan="2" />
+
+            <Grid Grid.Row="1" Background="Black">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+
+
+                <Controls:FriendControl
                 MouseEnter="FriendControl_MouseEnter"
                 DataContext="{Binding SelectedFriend}" Grid.Column="1" />
 
-            <Grid x:Name="navigationGrid" Grid.Column="1"  >
-                
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="navigationColumn" Width="200"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+                <Grid x:Name="navigationGrid" Grid.Column="1"  >
 
-                <Grid.RenderTransform>
-                    <TranslateTransform x:Name="navigationTransform"/>
-                </Grid.RenderTransform>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="navigationColumn" Width="200"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-                <Controls:NavigationControl   />
+                    <Grid.RenderTransform>
+                        <TranslateTransform x:Name="navigationTransform"/>
+                    </Grid.RenderTransform>
 
-                <GridSplitter HorizontalAlignment="Right" Grid.Column="0"  Width="5" Background="Red"/>
+                    <Controls:NavigationControl   />
+
+                    <GridSplitter HorizontalAlignment="Right" Grid.Column="0"  Width="5" Background="Red"/>
+
+                </Grid>
+
+
+
+                <Button Content="Navigation" MouseEnter="NavigationButton_MouseEnter" VerticalAlignment="top" Margin="2">
+                    <Button.LayoutTransform>
+                        <RotateTransform Angle="90"/>
+                    </Button.LayoutTransform>
+                </Button>
+
+
 
             </Grid>
 
- 
 
-            <Button Content="Navigation" MouseEnter="NavigationButton_MouseEnter" VerticalAlignment="top" Margin="2">
-                <Button.LayoutTransform>
-                    <RotateTransform Angle="90"/>
-                </Button.LayoutTransform>
-            </Button>
+            <Controls:FooterControl Grid.Row="2" Grid.ColumnSpan="2" />
 
 
-        
         </Grid>
 
+        <!-- 09/29/2020 04:19 pm - SSN - [20200929-1605] - [004] - M05-03 - FriendViewer: Loading overlay -->
+        <Controls:LoadingOverlay d:IsHidden="True" Visibility="{Binding IsLoading,Converter={StaticResource booleanToVisibilityConverter}}" />
 
-
-
-
-        <Controls:FooterControl Grid.Row="2" Grid.ColumnSpan="2" />
 
 
 
     </Grid>
+
 </Window>

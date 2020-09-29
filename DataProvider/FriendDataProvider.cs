@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace FriendViewer.DataProvider
 {
@@ -12,6 +13,10 @@ namespace FriendViewer.DataProvider
     {
         public IEnumerable<Friend> LoadFriends()
         {
+
+            // 09/29/2020 04:09 pm - SSN - [20200929-1605] - [002] - M05-03 - FriendViewer: Loading overlay
+            Thread.Sleep(3000);
+
             return new List<Friend>
             {
 
