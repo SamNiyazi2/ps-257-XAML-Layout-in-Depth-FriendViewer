@@ -19,6 +19,80 @@
                   SelectedItem="{Binding SelectedFriend, Mode=TwoWay}"
                   IsSynchronizedWithCurrentItem="True"
                   Background="Black" Foreground="White"
-                  DisplayMemberPath="FullName"/>
+                  DisplayMemberPath="FullName">
+
+            <!-- 09/29/2020 06:31 am - SSN - [20200929-0626] - [001] - M04-07 - FriendViewer: Scale of ListViewItems -->
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="RenderTransformOrigin" Value="0 0.5"/>
+
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+
+                            <!--<Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.25" ScaleY="1.25"/>
+                                </Setter.Value>
+                            </Setter>-->
+
+
+
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                            
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                         To="1.25" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                         To="1.25" Duration="0:0:0.2"/>
+
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </Trigger.EnterActions>
+
+
+
+
+
+
+
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                         To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                         To="1" Duration="0:0:0.2"/>
+
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </Trigger.ExitActions>
+
+
+
+
+
+                        </Trigger>
+
+
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+        </ListView>
+
     </Grid>
 </UserControl>
