@@ -10,6 +10,17 @@
     <None Remove="DataProvider\Images\julia.jpg" />
     <None Remove="DataProvider\Images\thomas.jpg" />
     <None Remove="DesignTimeData\Images\thomas.jpg" />
+    <None Remove="Images\pinned.bmp" />
+    <None Remove="Images\unpinned.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\pinned.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\unpinned.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
