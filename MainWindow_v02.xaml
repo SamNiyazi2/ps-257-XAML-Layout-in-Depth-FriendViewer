@@ -37,7 +37,8 @@
 
             <Controls:HeaderControl Grid.ColumnSpan="2" />
 
-            <Grid Grid.Row="1" Background="Black">
+
+            <Grid Grid.IsSharedSizeScope="True" Grid.Row="1" Background="Black">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -46,14 +47,25 @@
 
 
 
-                <Controls:FriendControl
-                MouseEnter="FriendControl_MouseEnter"
-                DataContext="{Binding SelectedFriend}" Grid.Column="1" />
+
+                <Grid x:Name="mainAreaGrid" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="columnToAddOrRemove" SharedSizeGroup="navigationGroup"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Controls:FriendControl
+                                            MouseEnter="FriendControl_MouseEnter"
+                                            DataContext="{Binding SelectedFriend}" Grid.Column="1" />
+
+                </Grid>
+
+
 
                 <Grid x:Name="navigationGrid" Grid.Column="1"  >
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition x:Name="navigationColumn" Width="200"/>
+                        <ColumnDefinition SharedSizeGroup="navigationGroup" x:Name="navigationColumn" Width="200"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
@@ -61,7 +73,7 @@
                         <TranslateTransform x:Name="navigationTransform"/>
                     </Grid.RenderTransform>
 
-                    <Controls:NavigationControl   />
+                    <Controls:NavigationControl x:Name="navigationControl" IsPinnedChanged="navigationControl_IsPinnedChanged"  />
 
                     <GridSplitter HorizontalAlignment="Right" Grid.Column="0"  Width="5" Background="Red"/>
 
@@ -69,7 +81,7 @@
 
 
 
-                <Button Content="Navigation" MouseEnter="NavigationButton_MouseEnter" VerticalAlignment="top" Margin="2">
+                <Button Visibility="Collapsed" x:Name="navigationButton" Content="Navigation" MouseEnter="NavigationButton_MouseEnter" VerticalAlignment="top" Margin="2">
                     <Button.LayoutTransform>
                         <RotateTransform Angle="90"/>
                     </Button.LayoutTransform>
