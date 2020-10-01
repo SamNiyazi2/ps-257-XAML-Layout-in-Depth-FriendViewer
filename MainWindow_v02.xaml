@@ -4,14 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FriendViewer"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors" 
         mc:Ignorable="d"
         Title="WindowWindow_v02" Height="450" Width="800"
         DataContext="{Binding Source={StaticResource ViewModelLocator},Path=MainViewModel}"
+        
         >
 
     <Window.Resources>
 
         <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+
+
+        <DataTemplate x:Key="mainAreaFriendTemplate">
+            <Grid Width="350" Height="300" Margin="10">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Border Background="White" >
+                    <Button Content="Close" HorizontalAlignment="Right" 
+                            Command="{Binding  DataContext.CloseMainAreaFriendCommand, RelativeSource={RelativeSource AncestorType={x:Type Window},Mode=FindAncestor} }"
+                            CommandParameter="{Binding}"/>
+                </Border>
+
+                <Controls:FriendControl Grid.Row="1" DataContext="{Binding}"/>
+
+            </Grid>
+
+        </DataTemplate>
+
 
     </Window.Resources>
 
@@ -48,15 +72,49 @@
 
 
 
-                <Grid x:Name="mainAreaGrid" Grid.Column="1">
+                <Grid x:Name="mainAreaGrid" 
+                      Grid.Column="1"
+                      Background="Transparent"
+                      MouseEnter="FriendControl_MouseEnter">
+                    <!-- Panel receives input only when it has "Background".-->
+
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="columnToAddOrRemove" SharedSizeGroup="navigationGroup"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Controls:FriendControl
+                    <!-- 10/01/2020 11:17 am - SSN - [20201001-1114] - [001] - M05-12 - FriendViewer: New main area -->
+
+                    <!--<Controls:FriendControl
                                             MouseEnter="FriendControl_MouseEnter"
-                                            DataContext="{Binding SelectedFriend}" Grid.Column="1" />
+                                            DataContext="{Binding SelectedFriend}" Grid.Column="1" />-->
+                    <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding MainAreaFriends}" ItemTemplate="{StaticResource mainAreaFriendTemplate}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel>
+                                        
+                                  
+                                    <b:Interaction.Behaviors>
+
+                                        <b:FluidMoveBehavior AppliesTo="Children" Duration="0:00:0.5">
+                                            <b:FluidMoveBehavior.EaseY>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </b:FluidMoveBehavior.EaseY>
+                                            <b:FluidMoveBehavior.EaseX>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </b:FluidMoveBehavior.EaseX>
+                                        </b:FluidMoveBehavior>
+
+                                    </b:Interaction.Behaviors>
+                                
+                                    </WrapPanel>
+
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
 
                 </Grid>
 
